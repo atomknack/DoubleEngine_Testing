@@ -1,0 +1,45 @@
+[
+  {
+    "id": 0,
+    "mesh": {
+      "Mesh": {
+        "vertices": [],
+        "triangles": []
+      },
+      "SideIds": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "SideTransforms": [
+        {
+          "rotation": "Zero",
+          "inverted": false
+        },
+        {
+          "rotation": "Zero",
+          "inverted": false
+        },
+        {
+          "rotation": "Zero",
+          "inverted": false
+        },
+        {
+          "rotation": "Zero",
+          "inverted": false
+        },
+        {
+          "rotation": "Zero",
+          "inverted": false
+        },
+        {
+          "rotation": "Zero",
+          "inverted": false
+        }
+      ]
+    }
+  }
+]

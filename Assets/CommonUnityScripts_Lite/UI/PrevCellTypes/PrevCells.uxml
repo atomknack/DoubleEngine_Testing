@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scenes/SingleMeshRenderer/MeshThumbnails.uss?fileID=7433441132597879392&amp;guid=20aec7ff708dea74ea9b7619b9b83ffe&amp;type=3#MeshThumbnails" />
+    <ui:VisualElement style="position: absolute; bottom: 0; left: 40px;">
+        <ui:VisualElement name="placeholderForChildDocument" style="flex-direction: row-reverse;">
+            <ui:Button display-tooltip-when-elided="true" name="prev4" class="thumbnail" style="visibility: hidden; width: 64px; height: 64px;" />
+            <ui:Button display-tooltip-when-elided="true" name="prev3" class="thumbnail" style="visibility: hidden; width: 64px; height: 64px;" />
+            <ui:Button display-tooltip-when-elided="true" name="prev2" class="thumbnail" style="visibility: hidden; width: 64px; height: 64px;" />
+            <ui:Button display-tooltip-when-elided="true" name="prev1" class="thumbnail" style="visibility: hidden; width: 64px; height: 64px;" />
+            <ui:Button display-tooltip-when-elided="true" name="prev0" class="thumbnail" style="visibility: hidden; width: 64px; height: 64px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

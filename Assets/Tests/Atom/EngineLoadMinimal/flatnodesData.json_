@@ -1,0 +1,48 @@
+[
+  {
+    "id": 0,
+    "flatTransform": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "form": {
+      "vertices": [],
+      "triangles": []
+    }
+  },
+  {
+    "id": 1,
+    "flatTransform": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "form": {
+      "vertices": [
+        {
+          "x": -0.5,
+          "y": -0.5
+        },
+        {
+          "x": -0.5,
+          "y": 0.5
+        },
+        {
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "x": 0.5,
+          "y": -0.5
+        }
+      ],
+      "triangles": [
+        3,
+        0,
+        1,
+        3,
+        1,
+        2
+      ]
+    }
+  }
+]

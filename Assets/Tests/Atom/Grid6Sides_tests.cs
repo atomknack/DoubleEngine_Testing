@@ -1,0 +1,160 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using NUnit.Framework;
+using DoubleEngine;
+using DoubleEngine.Atom;
+
+namespace AtomTests
+{
+[TestFixture]
+public class Grid6Sides_tests
+{
+    public static bool IsEqualOrFlippedEqual(Quaternion a, Quaternion b, double epsilon = 1e-5d) //need to be tested that it works in separate test 
+    {
+        if (Mathf.Abs(a.x - b.x) < epsilon && Mathf.Abs(a.y - b.y) < epsilon && Mathf.Abs(a.z - b.z) < epsilon && Mathf.Abs(a.w - b.w) < epsilon)
+            return true;
+        if (Mathf.Abs(a.x + b.x) < epsilon && Mathf.Abs(a.y + b.y) < epsilon && Mathf.Abs(a.z + b.z) < epsilon && Mathf.Abs(a.w + b.w) < epsilon)
+            return true;
+        return false;
+    }
+
+
+    [Test]
+    public void AllPossibleValuesTest()
+    {
+        HashSet<Grid6Sides> allCombinations = new();
+        Dictionary<Grid6Sides, Quaternion> sixSidesToRotation = new();
+        bool[] invertAxis = { false, true };
+        int[] rot4 = { 0, 1, 2, 3 };
+
+        foreach (var invertY in invertAxis)
+            foreach (var rotX in rot4)
+                foreach (var rotZ in rot4)
+                    foreach (var rotY in rot4)
+                    {
+                    Grid6Sides tge = new (
+                        new GridSide(0, FlatNodeTransform.Default),
+                        new GridSide(1, FlatNodeTransform.Default),
+                        new GridSide(2, FlatNodeTransform.Default),
+                        new GridSide(3, FlatNodeTransform.Default),
+                        new GridSide(4, FlatNodeTransform.Default),
+                        new GridSide(5, FlatNodeTransform.Default)
+                        );
+
+                        Quaternion q = Quaternion.identity;
+
+                        if (invertY)
+                            tge = tge.InvertY();
+
+                    int tRotX = rotX;
+                    while (tRotX > 0)
+                    {
+                        tge = tge.RotateX90();
+                            q = Quaternion.Euler(90f, 0, 0) * q;
+                            tRotX--;
+                    }
+
+                    int tRotY = rotY;
+                    while (tRotY > 0)
+                    {
+                        tge = tge.RotateY90();
+                            q = Quaternion.Euler(0, 90f, 0) * q;
+                            tRotY--;
+                    }
+
+                    int tRotZ = rotZ;
+                    while (tRotZ > 0)
+                    {
+                        tge = tge.RotateZ90();
+                            q = Quaternion.Euler(0, 0, 90f) * q;
+                            tRotZ--;
+                    }
+                        if (allCombinations.Contains(tge))
+                        {
+                            TestContext.WriteLine(q);
+                            Assert.True(IsEqualOrFlippedEqual(q, sixSidesToRotation.GetValueOrDefault<Grid6Sides, Quaternion>(tge)));
+                        }
+                        else
+                            sixSidesToRotation.Add(tge, q);
+                    if(sixSidesToRotation.TryGetValue(tge, out Quaternion rotation))
+                            Assert.True(IsEqualOrFlippedEqual(q,rotation));
+
+                    allCombinations.Add(tge);
+                    Assert.True(allCombinations.Contains(tge));
+                }
+        TestContext.WriteLine(allCombinations.Count);
+
+        foreach (var invertX in invertAxis)
+            foreach (var invertY in invertAxis)
+                foreach (var invertZ in invertAxis)
+                    foreach (var rotX in rot4)
+                        foreach (var rotY in rot4)
+                            foreach (var rotZ in rot4)
+                            {
+                                Grid6Sides tge = new (
+                                    new GridSide(0, FlatNodeTransform.Default),
+                                    new GridSide(1, FlatNodeTransform.Default),
+                                    new GridSide(2, FlatNodeTransform.Default),
+                                    new GridSide(3, FlatNodeTransform.Default),
+                                    new GridSide(4, FlatNodeTransform.Default),
+                                    new GridSide(5, FlatNodeTransform.Default)
+                                    );
+                                if(invertX)
+                                    tge = tge.InvertX();
+                                if(invertY)
+                                    tge = tge.InvertY();
+                                if(invertZ)
+                                    tge = tge.InvertZ();
+
+                                //Quaternion q = Quaternion.identity;
+
+                                int tRotX = rotX;
+                                while(tRotX > 0)
+                                {
+                                    tge = tge.RotateX90();
+                                    //q = Quaternion.Euler(90f, 0, 0) * q;
+                                    tRotX--;
+                                }
+
+                                int tRotY = rotY;
+                                while (tRotY > 0)
+                                {
+                                    tge = tge.RotateY90();
+                                    //q = Quaternion.Euler(0, 90, 0) * q;
+                                    tRotY--;
+                                }
+
+                                int tRotZ = rotZ;
+                                while (tRotZ > 0)
+                                {
+                                    tge = tge.RotateZ90();
+                                    //q = Quaternion.Euler(0, 0, 90) * q;
+                                    tRotZ--;
+                                }
+
+                                //if (sixSidesToRotation.TryGetValue(tge, out Quaternion rotation))
+                                //    Assert.True(IsEqualOrFlippedEqual(rotation, q), $"{rotation} {q}");
+
+                                //Assert.False(allCombinations.Contains(tge));
+                                allCombinations.Add(tge);
+                                Assert.True(allCombinations.Contains(tge));
+
+                                allCombinations.Add(tge.InvertX());
+                                allCombinations.Add(tge.InvertY());
+                                allCombinations.Add(tge.InvertZ());
+                                allCombinations.Add(tge.RotateX90());
+                                allCombinations.Add(tge.RotateY90());
+                                allCombinations.Add(tge.RotateZ90());
+                            }
+
+        TestContext.WriteLine(allCombinations.Count);
+        foreach (var value in allCombinations)
+        {
+            TestContext.WriteLine(value.ToString());
+        }
+
+    }
+
+}
+}

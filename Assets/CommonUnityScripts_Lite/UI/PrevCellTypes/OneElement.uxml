@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scenes/SingleMeshRenderer/MeshThumbnails.uss?fileID=7433441132597879392&amp;guid=20aec7ff708dea74ea9b7619b9b83ffe&amp;type=3#MeshThumbnails" />
+    <ui:VisualElement>
+        <ui:VisualElement>
+            <ui:Button display-tooltip-when-elided="true" name="currentItem" class="thumbnail" style="width: 64px; height: 64px; visibility: hidden;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

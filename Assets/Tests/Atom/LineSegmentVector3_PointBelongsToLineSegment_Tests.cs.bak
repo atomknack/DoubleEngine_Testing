@@ -1,0 +1,42 @@
+using NUnit.Framework;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using DoubleEngine;
+
+namespace AtomTests
+{
+[TestFixture]
+public class LineSegmentVector3_PointBelongsToLineSegment_Tests
+{
+    public static IEnumerable Vec2D_PointBelongsToLineSegment = new[] {
+        new[]{new Vector2(0,0), new Vector2(2,2), new Vector2(1,1)},
+        new[]{new Vector2(1,1), new Vector2(-2,-2), new Vector2(0,0)},
+        new[]{new Vector2(1,0), new Vector2(3, 0), new Vector2(2,0)},
+        new[]{new Vector2(1,0), new Vector2(3, 0), new Vector2(1f,0)},
+        new[]{new Vector2(1,2), new Vector2(3, 0), new Vector2(2,1)},
+        };
+
+    [TestCaseSource("Vec2D_PointBelongsToLineSegment")]
+    public void Vec2Don3D_PointBelongsToLineSegment_Test(Vector2 lineStart, Vector2 lineEnd, Vector2 point)
+    {
+        TestContext.WriteLine($"from{lineStart:F5}to{lineEnd:F5} point:{point:F5}; projected:{LineSegmentVector3.ProjectPointOnLine(lineStart, lineEnd, point):F5}");
+        Assert.True(LineSegmentVector3.PointBelongsToLineSegment(lineStart, lineEnd, point));
+    }
+
+    public static IEnumerable Vec2D_PointNOTBelongsToLineSegment = new[] {
+        new[]{new Vector2(0,0), new Vector2(2,2), new Vector2(1,1.001f)},
+        new[]{new Vector2(1,1), new Vector2(-2.2f,-2), new Vector2(0,0)},
+        new[]{new Vector2(1,0), new Vector2(3, 0), new Vector2(2,0.01f)},
+        new[]{new Vector2(1,0), new Vector2(3, 0), new Vector2(3.0001f,0)},
+        new[]{new Vector2(1,0), new Vector2(3, 0), new Vector2(0.99999f,0)},
+        new[]{new Vector2(1,2), new Vector2(3, 0), new Vector2(2.001f,1)},
+        };
+    [TestCaseSource("Vec2D_PointNOTBelongsToLineSegment")]
+    public void Vec2Don3D_PointNOTBelongsToLineSegment_Test(Vector2 lineStart, Vector2 lineEnd, Vector2 point)
+    {
+        TestContext.WriteLine($"from{lineStart:F5}to{lineEnd:F5} point:{point:F5}; projected:{LineSegmentVector3.ProjectPointOnLine(lineStart, lineEnd, point):F5}");
+        Assert.False(LineSegmentVector3.PointBelongsToLineSegment(lineStart, lineEnd, point));
+    }
+}
+}

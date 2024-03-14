@@ -1,0 +1,898 @@
+[
+  {
+    "node": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "Zero",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "a90",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "a90",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "aNegative180",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "aNegative180",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "a270",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "a270",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "Zero",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "Zero",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "a90",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "a90",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "aNegative180",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "aNegative180",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "a270",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "a270",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "a90",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "a90",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "a90",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "a90",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "aNegative180",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "a90",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "aNegative180",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "a270",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "a90",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "a270",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "Zero",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "a90",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "Zero",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "a270",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "a90",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "a90",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "Zero",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "a90",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "aNegative180",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "a90",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "a90",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "a270",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "aNegative180",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "aNegative180",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "aNegative180",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "aNegative180",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "a90",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "a270",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "aNegative180",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "aNegative180",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "Zero",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "aNegative180",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "a270",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "a90",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "aNegative180",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "Zero",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "aNegative180",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "aNegative180",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "a90",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "a270",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "aNegative180",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "aNegative180",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "Zero",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "aNegative180",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "a270",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "a90",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "a270",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "a270",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "a270",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "a90",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "Zero",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "a270",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "aNegative180",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "a90",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "a270",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "a270",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "aNegative180",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "a270",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "Zero",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "a90",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "a270",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "a90",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "aNegative180",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "a270",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "aNegative180",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "a270",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "a270",
+      "inverted": false
+    },
+    "transformedBy": {
+      "rotation": "a270",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "Zero",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "Zero",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "Zero",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "Zero",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "a90",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "a90",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "Zero",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "aNegative180",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "aNegative180",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "Zero",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "a270",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "a270",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "Zero",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "Zero",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "Zero",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "Zero",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "a90",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "a90",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "Zero",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "aNegative180",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "aNegative180",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "Zero",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "a270",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "a270",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "a90",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "a90",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "a90",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "a90",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "aNegative180",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "a90",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "aNegative180",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "a270",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "a90",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "a270",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "Zero",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "a90",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "Zero",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "a270",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "a90",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "a90",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "Zero",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "a90",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "aNegative180",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "a90",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "a90",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "a270",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "aNegative180",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "aNegative180",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "aNegative180",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "aNegative180",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "a90",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "a270",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "aNegative180",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "aNegative180",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "Zero",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "aNegative180",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "a270",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "a90",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "aNegative180",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "Zero",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "aNegative180",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "aNegative180",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "a90",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "a270",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "aNegative180",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "aNegative180",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "Zero",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "aNegative180",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "a270",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "a90",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "a270",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "a270",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "a270",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "a90",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "Zero",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "a270",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "aNegative180",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "a90",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "a270",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "a270",
+      "inverted": false
+    },
+    "result": {
+      "rotation": "aNegative180",
+      "inverted": true
+    }
+  },
+  {
+    "node": {
+      "rotation": "a270",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "Zero",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "a90",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "a270",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "a90",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "aNegative180",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "a270",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "aNegative180",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "a270",
+      "inverted": false
+    }
+  },
+  {
+    "node": {
+      "rotation": "a270",
+      "inverted": true
+    },
+    "transformedBy": {
+      "rotation": "a270",
+      "inverted": true
+    },
+    "result": {
+      "rotation": "Zero",
+      "inverted": false
+    }
+  }
+]

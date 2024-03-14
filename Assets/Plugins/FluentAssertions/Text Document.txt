@@ -1,0 +1,2 @@
+https://www.nuget.org/packages/FluentAssertions/6.7.0
+\fluentassertions.6.7.0.nupkg\lib\netstandard2.1\

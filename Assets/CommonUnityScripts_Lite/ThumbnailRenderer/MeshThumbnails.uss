@@ -1,0 +1,13 @@
+.thumbnail {
+    width: 96px;
+    height: 96px;
+    background-color: rgba(44, 44, 44, 0.17);
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+
+.thumbnail:hover {
+    background-color: rgba(26, 26, 26, 0.39);
+}

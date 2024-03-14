@@ -1,0 +1,54 @@
+using System.Collections;
+using System.Collections.Generic;
+using NUnit.Framework;
+using UnityEngine;
+
+using CollectionLike;
+using CollectionLike.Enumerables;
+
+namespace Enumerables
+{
+    
+[TestFixture]
+public class Enumerate
+{
+    [Test]
+    public static void LogTestArrayListEnumerate()
+    {
+        int[] arr = { 2, 3, 4, 5, 6, 7, 8 };
+        foreach ((int i, var value) in arr.Enumerate())
+        {
+            TestContext.Write($"({i},{value}); ");
+        }
+        TestContext.WriteLine("");
+        foreach ((int i, var value) in arr.EnumerateReverse())
+        {
+            TestContext.Write($"({i},{value}); ");
+        }
+        TestContext.WriteLine("");
+        foreach (int element in arr.Reversed())
+        {
+            TestContext.Write($"({element}); ");
+        }
+        TestContext.WriteLine("");
+        TestContext.WriteLine(string.Join(",", arr.Reversed()));
+        List<int> arrList = new List<int>(arr);
+        foreach ((int i, var value) in arrList.Enumerate())
+        {
+            TestContext.Write($"({i},{value}); ");
+        }
+        TestContext.WriteLine("");
+        foreach ((int i, var value) in arrList.EnumerateReverse())
+        {
+            TestContext.Write($"({i},{value}); ");
+        }
+        TestContext.WriteLine("");
+        foreach (int element in arrList.Reversed())
+        {
+            TestContext.Write($"({element}); ");
+        }
+
+        TestContext.WriteLine(string.Join(",", arrList.Reversed()));
+    }
+}
+}

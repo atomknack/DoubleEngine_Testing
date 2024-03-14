@@ -1,0 +1,17 @@
+{
+    "name": "ThumbnailRenderer",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6ea6e3eff06949241bb6ff8ef20147ab",
+        "GUID:53aeff7bce90c594a801dfaeca3d054d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

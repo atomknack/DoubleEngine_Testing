@@ -1,0 +1,13 @@
+[
+  {
+    "id": 0,
+    "flatTransform": {
+      "rotation": "Zero",
+      "inverted": false
+    },
+    "form": {
+      "vertices": [],
+      "triangles": []
+    }
+  }
+]

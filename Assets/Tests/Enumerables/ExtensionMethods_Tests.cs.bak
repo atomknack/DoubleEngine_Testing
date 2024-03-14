@@ -1,0 +1,45 @@
+using NUnit.Framework;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using DoubleEngine;
+
+[TestFixture]
+public class ExtensionMethods_Test
+{
+    [Test]
+    public void CyclicLeftShift_Test()
+    {
+        int[] initial = { 1, 2, 3, 4, 5 };
+        int[] leftShifted = { 2, 3, 4, 5, 1 };
+        TestContext.WriteLine($"{leftShifted.ItemsToString()}; {initial.CyclicLeftShift().ItemsToString()}");
+        Assert.AreEqual(leftShifted, initial.CyclicLeftShift());
+    }
+    [Test]
+    public void CyclicRightShift_Test()
+    {
+        int[] initial = { 1, 2, 3, 4, 5 };
+        int[] rightShifted = { 5, 1, 2, 3, 4,};
+        TestContext.WriteLine($"{rightShifted.ItemsToString()}; {initial.CyclicRightShift().ItemsToString()}");
+        Assert.AreEqual(rightShifted, initial.CyclicRightShift());
+    }
+
+    [Test]
+    public void CyclicShiftEmptyOfNull_Test()
+    {
+        int[] initial = { };
+        int[] shifted = { };
+        TestContext.WriteLine($"{initial.ItemsToString()}; {shifted.CyclicLeftShift().ItemsToString()}");
+        Assert.AreEqual(shifted, initial.CyclicLeftShift());
+        Assert.AreEqual(shifted, initial.CyclicRightShift());
+        Assert.AreNotEqual(null, initial.CyclicLeftShift());
+        Assert.AreNotEqual(null, initial.CyclicRightShift());
+        initial = null;
+        shifted = null;
+        TestContext.WriteLine($"{initial.ItemsToString()}; {shifted.CyclicLeftShift().ItemsToString()}");
+        Assert.AreEqual(shifted, initial.CyclicLeftShift());
+        Assert.AreEqual(shifted, initial.CyclicRightShift());
+        Assert.AreNotEqual(new { }, initial.CyclicLeftShift());
+        Assert.AreNotEqual(new { }, initial.CyclicRightShift());
+    }
+}

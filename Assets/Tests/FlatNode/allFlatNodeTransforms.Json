@@ -1,0 +1,34 @@
+[
+  {
+    "rotation": "Zero",
+    "inverted": false
+  },
+  {
+    "rotation": "a90",
+    "inverted": false
+  },
+  {
+    "rotation": "a180",
+    "inverted": false
+  },
+  {
+    "rotation": "a270",
+    "inverted": false
+  },
+  {
+    "rotation": "Zero",
+    "inverted": true
+  },
+  {
+    "rotation": "a90",
+    "inverted": true
+  },
+  {
+    "rotation": "a180",
+    "inverted": true
+  },
+  {
+    "rotation": "a270",
+    "inverted": true
+  }
+]

@@ -1,0 +1,86 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using NUnit.Framework;
+using DoubleEngine;
+using DoubleEngine.Atom;
+
+[TestFixture]
+public class PerpendicularAngle_Tests
+{
+    PerpendicularAngle[] zeros =
+{
+            PerpendicularAngle.a0,
+            PerpendicularAngle.a360,
+            PerpendicularAngle.Default,
+            PerpendicularAngle.Zero,
+            PerpendicularAngle.Full,
+            PerpendicularAngle.aNegative360,
+        };
+
+    PerpendicularAngle[] angles =
+{
+            PerpendicularAngle.a0,
+            PerpendicularAngle.a90,
+            PerpendicularAngle.a180,
+            PerpendicularAngle.a270,
+        };
+
+    [Test]
+    public void EqualityFromInt()
+    {
+        int angle = 0;
+        for (int i = 0; i < 4; i++)
+        {
+            Assert.AreNotEqual(angle, angles[i]);//////!!!!!!!!
+
+            Assert.IsTrue(angle==(int)angles[i]);
+            Assert.AreEqual(angle, (int)angles[i]);
+            Assert.AreEqual((PerpendicularAngle)angle, angles[i]);
+            Assert.AreEqual(AngleMethods.FromInt(angle), angles[i]);
+            angle += 90;
+        }
+    }
+
+    [Test]
+    public void PerpendicularAngle_a270_Equality()
+    {
+        Assert.IsTrue(PerpendicularAngle.a270 == AngleMethods.FromInt(270));
+        Assert.AreEqual(PerpendicularAngle.a270,PerpendicularAngle.aNegative90);
+
+        Assert.IsFalse(PerpendicularAngle.a270 ==PerpendicularAngle.a90);
+        Assert.IsFalse(PerpendicularAngle.a270 ==PerpendicularAngle.a180);
+        Assert.IsFalse(PerpendicularAngle.a270 == PerpendicularAngle.aNegative270);
+        Assert.IsFalse(PerpendicularAngle.a270 == PerpendicularAngle.aNegative270);
+        Assert.IsFalse(PerpendicularAngle.a270 == PerpendicularAngle.aNegative360);
+    }
+
+    [Test]
+    public void PerpendicularAngle_A0_Equality()
+    {
+        Assert.IsTrue(PerpendicularAngle.a0 == PerpendicularAngle.Zero);
+        Assert.IsTrue(PerpendicularAngle.Zero == PerpendicularAngle.Default);
+        Assert.IsTrue(PerpendicularAngle.Default == PerpendicularAngle.Full);
+
+        foreach (var angle in zeros)
+        {
+            Assert.IsTrue(angle == PerpendicularAngle.a0);
+            Assert.IsTrue(angle == AngleMethods.FromInt(0));
+        }
+    }
+
+    [Test]
+    public void PerpendicularAngle_A0_NotEquality()
+    {
+        Assert.IsFalse(PerpendicularAngle.a0 == PerpendicularAngle.a270);
+        Assert.IsFalse(PerpendicularAngle.Zero == PerpendicularAngle.aNegative90);
+        Assert.IsFalse(PerpendicularAngle.Default == PerpendicularAngle.aNegative270);
+
+        foreach (var angle in zeros)
+        {
+            Assert.IsFalse(angle == PerpendicularAngle.a180);
+            Assert.IsFalse(angle == AngleMethods.FromInt(90));
+        }
+    }
+
+}

@@ -1,0 +1,173 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using NUnit.Framework;
+using UnityEngine;
+using UnityEngine.TestTools;
+
+using DoubleEngine;
+using DoubleEngine.Atom;
+using System.IO;
+using Newtonsoft.Json;
+using static Assertions;
+
+namespace Meshes
+{
+    public class Triangulate2D_Tests
+    {
+        public static Vec2D[][] polys = new Vec2D[][] {
+            new Vec2D[]{ new Vec2D(0,0), new Vec2D(3,5), new Vec2D(5,1) },
+            new Vec2D[]{ new Vec2D(1,1), new Vec2D(2,-2), new Vec2D(1, -1), new Vec2D(-1,-3),  new Vec2D(-0.7,1)},
+            new Vec2D[]{new Vec2D(0,3),new Vec2D(0.5, 1.5),new Vec2D(3,1.5),new Vec2D(1,1),new Vec2D(2,-1),new Vec2D(0,0),new Vec2D(-2,-1),new Vec2D(-1,1),new Vec2D(-3,1.5),new Vec2D(-0.5,1.5)},
+            new Vec2D[]{ new Vec2D(0,2), new Vec2D(2, 0), new Vec2D(-2,-2) },
+            new Vec2D[]{ new Vec2D(-1,2), new Vec2D(3, 5), new Vec2D(0,-7) },
+            new Vec2D[]{ new Vec2D(-1,-1), new Vec2D(-1,1), new Vec2D(1, 1), new Vec2D(1,-1)},
+        };
+
+        public static TestCaseData[] numberOfTriangles = {
+            new TestCaseData( 0, 1),
+            new TestCaseData( 1, 3),
+            new TestCaseData( 2, 8),
+            new TestCaseData( 3, 1),
+            new TestCaseData( 4, 1),
+            new TestCaseData( 5, 2),
+        };
+
+
+        [TestCaseSource("numberOfTriangles")]
+        public void TriangulatePoly(int polyIndex, int expectedNumberOfTriangles)
+        {
+            //List<IndexedTri> triangulated = TriangulatePoly(polys[polyIndex], expectedNumberOfTriangles);
+            MeshFragmentVec2D triangulatedMesh = MeshFragmentVec2D.FromPolyCopy(polys[polyIndex]);
+            List<IndexedTri> triangulated = triangulatedMesh.Triangles.ToIndexedTriList();
+            Assert.AreEqual(expectedNumberOfTriangles, triangulated.Count);
+            TestTriangulated(triangulatedMesh.Vertices, triangulated);
+        }
+        /*public List<IndexedTri> TriangulatePoly(Vec2D[] poly, int expectedNumberOfTriangles)
+        {
+            var triangulated = TriangulatePolyWithoutHoles(Enumerable.Range(0, poly.Length).ToArray(), poly);
+            Assert.AreEqual(expectedNumberOfTriangles, triangulated.Count);
+            return triangulated;
+        }*/
+        /// //
+        public static MeshFragmentVec2D[] OneSubpoly()
+        {
+            MeshFragmentVec2D[] ones = JsonHelpers.LoadFromJsonFile<MeshFragmentVec2D[]>(
+                Application.dataPath + "/Tests/Meshes/2D/Meshes2D_With_one_subpoly.json");
+            return ones;//.Take(5).ToArray();
+        }
+        [TestCaseSource("OneSubpoly")]
+        public void TriangulateMeshesWithOneSubpoly(MeshFragmentVec2D fragment)
+        {
+            var joined = fragment.JoinedClosestVertices();
+            var singleEdges = EdgeIndexed.SingleEdgesFromTriangles(joined.Triangles.ToArray());
+            var iEPoly = IndexedEdgePoly.DebugIndexedEdgePolyFromSingleEdges(singleEdges, joined.Vertices.ToArray());
+            var Corners = IndexedEdgePoly.GetCorners(iEPoly, 0);
+            var triangulated = TriangulatePolyWithoutHoles(Corners, joined.Vertices);
+            Assert.AreEqual(joined.Triangles.Length / 3, triangulated.Count);
+            TestTriangulated(joined.Vertices, triangulated);
+
+            /*//some temporary shit about immutable and library conflicts: 
+            IndexedPolyVec2D indexedPolyVec2D = new IndexedPolyVec2D(fragment);
+            IndexedPolyVec2D indexed2 = indexedPolyVec2D;
+            string indexed3 = indexed2.ToString();
+            TestContext.WriteLine(indexed3);*/
+        }
+
+
+        [TestCase("20220318_mesh2d_id20_2poly1hole.json", 2, 1)]
+        [TestCase("20220318_mesh2d_id23_4poly3hole.json", 4, 3)]
+        [TestCase("20220318_mesh2d_id24_1poly2hole.json", 1, 2)]
+        [TestCase("20220318_mesh2d_id21_5poly4hole.json", 5, 4)]
+
+        [TestCase("20220320_mesh2d_id25_atypical.json", 2, 0)]
+        [TestCase("20220320_mesh2d_id26_atypical.json", 3, 0)]
+        [TestCase("20220320_mesh2d_id27_atypical.json", 1, 0)]
+        [TestCase("20220320_mesh2d_id28_atypical.json", 1, 0)]
+        [TestCase("20220320_mesh2d_id29_atypical.json", 1, 1)]
+        [TestCase("20220320_mesh2d_id30_atypical.json", 1, 0)]
+        [TestCase("20220321_mesh2d_id32_atypical_NotFinished.json", 6, 0)]
+        [TestCase("20220321_mesh2d_id36_like32_atypical.json", 6, 0, 31)]
+        [TestCase("20220321_mesh2d_id34_atypical_NotFinished.json", 4, 2, 35)]
+        [TestCase("20220321_mesh2d_id39_like34_atypical.json", 4, 1)]
+        [TestCase("20220321_mesh2d_id37_atypical.json", 1, 1)]
+        [TestCase("20220321_mesh2d_id40_atypical.json", 8, 0)]
+        public void TriangulateMesh(string fileName, int expectedNumPolys, int expectedNumHoles, int? expectedTrianglesCount = null)
+    {
+            MeshFragmentVec2D mesh = JsonHelpers.LoadFromJsonFile<MeshFragmentVec2D>(
+                    Application.dataPath + "/Tests/Meshes/2D/mesh2D_testcases/" + fileName);
+
+            var ipoly = IndexedPolyVec2D.CreateIndexedPolyVec2D(mesh);
+            Assert.AreEqual(expectedNumPolys, ipoly.GetSlivers().Length);
+            Assert.AreEqual(expectedNumHoles, ipoly.GetSlivers().ToArray().Sum(x=>x.GetHoles().Length));
+            var triangulated = ipoly.Triangulate();
+            //TestContext.WriteLine(JsonConvert.SerializeObject(MeshFragmentVec2D.CreateMeshFragment(mesh.Vertices.ToArray(), triangulated.ToTriangles())));
+            TestTriangulated(mesh.Vertices, triangulated);
+            if (expectedTrianglesCount == null)
+                expectedTrianglesCount = mesh.Triangles.Length / 3;
+            TestContext.WriteLine($"{expectedTrianglesCount.Value}, {mesh.Triangles.Length / 3}, {triangulated.Count}");
+            Assert.AreEqual(expectedTrianglesCount.Value, triangulated.Count);
+        }
+        public List<IndexedTri> TriangulatePolyWithoutHoles(ReadOnlySpan<int> corners, ReadOnlySpan<Vec2D> vertices)
+        {
+            List<int> cornersList = corners.CreateNewListFromSpanElements();
+            List<IndexedTri> triangulated = new List<IndexedTri>();
+            IndexedPolyVec2D.TrianglesBuilder.Triangulator triangulator =
+                new IndexedPolyVec2D.TrianglesBuilder.Triangulator(vertices, cornersList.ToArray(), cornersList, new List<List<int>>());
+
+            Assert.IsTrue(IndexedPolyVec2D.TrianglesBuilder.TriangulatePolyCorners(ref cornersList, ref triangulated, triangulator));
+            return triangulated;
+        }
+
+        public static void TestTriangulated(ReadOnlySpan<Vec2D> vertices, List<IndexedTri> triangulated)
+        {
+            AssertAllTrianglesClockwise(vertices, triangulated);
+            //next two test should allways pass if Clockwise testing is correct
+            //AssertNoCounterClockwiseTriangles(vertices, triangulated);
+            //AssertNoLineSizeTriangles(vertices, triangulated);
+
+            AssertNoDifferentTrianglesHaveAllSameVertices(triangulated);
+            AssertIfTrianglesHave2SameVerticesTheyHaveCommonOppositeEdge(triangulated);
+            AssertNoTriangleOverlapPointThatNotItsCorner(vertices, triangulated);
+        }
+
+        /*public static Vec2D[][] backwardsPolys = new Vec2D[][] {
+            new Vec2D[]{ new Vec2D(-0.7,1), new Vec2D(-1, -3), new Vec2D(1, -1), new Vec2D(2, -2), new Vec2D(1,1),},
+ 
+        };*/
+
+        /*
+        [Test]
+        public void SortFlatModesMeshes()
+        {
+            FlatNode[] flatNodes = JsonHelpers.LoadFromJsonFile<FlatNode[]>(
+                "C:/Projects/DoubleLibrary/Assets/Tests/Meshes/2D/_unsorted_flatnodesData.json_");
+            TestContext.WriteLine($"{flatNodes.Length}");
+            List<MeshFragmentVec2D> one = new List<MeshFragmentVec2D>();
+            List<MeshFragmentVec2D> two = new List<MeshFragmentVec2D>();
+            List<MeshFragmentVec2D> more = new List<MeshFragmentVec2D>();
+
+            foreach (FlatNode node in flatNodes)
+            {
+                var joined = node.form.JoinedClosestVertices();
+                var singleEdges = IndexedEdge.SingleEdgesFromTriangles(joined.triangles);
+                Vec2D[] verticesVec2D = joined.vertices.ConvertXYZtoXYArray();
+                Vector2[] verticesVector2D = verticesVec2D.ToArrayVector2();
+                var iEPoly = new IndexedEdgePoly(verticesVector2D, singleEdges);
+                TestContext.WriteLine($"{iEPoly.subPolygons.Length}");
+                if (iEPoly.subPolygons.Length == 1)
+                    one.Add(MeshFragmentVec2D.CreateMeshFragment(verticesVec2D, joined.triangles));
+                if (iEPoly.subPolygons.Length == 2)
+                    two.Add(MeshFragmentVec2D.CreateMeshFragment(verticesVec2D, joined.triangles));
+                if (iEPoly.subPolygons.Length > 2)
+                    more.Add(MeshFragmentVec2D.CreateMeshFragment(verticesVec2D, joined.triangles));
+
+                JsonHelpers.SaveToJsonFile(one, "C:/Projects/DoubleLibrary/Assets/Tests/Meshes/2D/Meshes2D_With_one_subpoly.json_");
+                JsonHelpers.SaveToJsonFile(two, "C:/Projects/DoubleLibrary/Assets/Tests/Meshes/2D/Meshes2D_With_two_subpoly.json_");
+                JsonHelpers.SaveToJsonFile(more, "C:/Projects/DoubleLibrary/Assets/Tests/Meshes/2D/Meshes2D_With_more_subpoly.json_");
+            }
+        }
+        */
+    }
+}

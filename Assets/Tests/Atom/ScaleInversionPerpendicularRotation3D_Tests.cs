@@ -1,0 +1,65 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using NUnit.Framework;
+using DoubleEngine;
+using DoubleEngine.Atom;
+using DoubleEngine.UHelpers;
+
+namespace AtomTests
+{
+[TestFixture]
+public class ScaleInversionPerpendicularRotation3D_Tests
+{
+
+    [Test]
+    public void MinValueTest() => Assert.AreEqual(0, ScaleInversionPerpendicularRotation3.minValue);
+    [Test]
+    public void MaxPlusOneValueTest()
+    {
+        TestContext.WriteLine(ScaleInversionPerpendicularRotation3.maxValuePlusOne);
+        Assert.AreEqual(2 * 2 * 2 * 4 * 4 * 4, ScaleInversionPerpendicularRotation3.maxValuePlusOne);
+    }
+
+    [Test]
+    public void AllPossibleValuesTest()
+    {
+        HashSet<int> allCombinations = new();
+        bool[] invertAxis = { false, true };
+        int[] rot4 = { 0,1,2,3};
+        foreach (var invertX in invertAxis)
+            foreach (var invertY in invertAxis)
+                foreach(var invertZ in invertAxis)
+                    foreach(var rotX in rot4)
+                        foreach(var rotY in rot4)
+                            foreach (var rotZ in rot4)
+                            {
+                                ScaleInversionPerpendicularRotation3 sipr = new(
+                                    new ScaleInversionV3(invertX, invertY, invertZ),
+                                    PerpendicularRotation3.PerpendicularRotationFrom4PositionInt(rotX, rotY, rotZ)
+                                    );
+
+                                Assert.IsTrue(sipr.index >= 0);
+                                Assert.IsTrue(sipr.index >= ScaleInversionPerpendicularRotation3.minValue);
+                                Assert.IsTrue(sipr.index < ScaleInversionPerpendicularRotation3.maxValuePlusOne);
+
+                                Assert.IsFalse(allCombinations.Contains(sipr.index));
+                                allCombinations.Add(sipr.index);
+                                Assert.IsTrue(allCombinations.Contains(sipr.index));
+
+                                ScaleInversionV3 si = sipr.GetScaleInversionVector();
+                                Assert.AreEqual(invertX, si.invertX);
+                                Assert.AreEqual(invertY, si.invertY);
+                                Assert.AreEqual(invertZ, si.invertZ);
+
+                                PerpendicularRotation3 pr = sipr.GetPerpendicularRotation3D();
+                                Vector3Int prV3Int = pr.ToAngleDegreesVec3I().ToVector3Int();
+                                Assert.IsTrue(prV3Int.x == (rotX * 90));
+                                Assert.IsTrue(prV3Int.y == (rotY * 90));
+                                Assert.IsTrue(prV3Int.z == (rotZ * 90));
+                            }
+
+
+    }
+}
+}

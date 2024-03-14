@@ -1,0 +1,36 @@
+{
+    "name": "DoubleLibraryUTests",
+    "rootNamespace": "",
+    "references": [
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "CommonSymlinkScripts",
+        "Graph",
+        ""
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "Newtonsoft.Json.dll",
+        "Fastenshtein.dll",
+        "System.Collections.Immutable.dll",
+        "Collections.Pooled.dll",
+        "FluentAssertions.dll",
+        "lzma2201.dll",
+        "DoubleEngine.UVectorCore.dll",
+        "DoubleEngine.CommonHelpers.dll",
+        "DoubleEngine.UHelpers.dll",
+        "DoubleEngine.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

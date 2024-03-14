@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Label text="Enter MeshFragment2D Json here:" display-tooltip-when-elided="true" />
+    <ui:VisualElement>
+        <ui:TextField picking-mode="Ignore" value="filler text" text="filler text" name="textField_id" multiline="true" style="height: 221px;" />
+    </ui:VisualElement>
+    <ui:Button text="Button" display-tooltip-when-elided="true" name="button_id" />
+</ui:UXML>

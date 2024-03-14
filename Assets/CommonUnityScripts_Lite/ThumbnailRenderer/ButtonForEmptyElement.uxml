@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scenes/SingleMeshRenderer/MeshThumbnails.uss?fileID=7433441132597879392&amp;guid=20aec7ff708dea74ea9b7619b9b83ffe&amp;type=3#MeshThumbnails" />
+    <ui:VisualElement>
+        <ui:Label text="Empty" display-tooltip-when-elided="true" style="font-size: 24px; align-items: center; justify-content: center; top: 25px; position: absolute; right: 5px; width: 81px;" />
+        <ui:Button display-tooltip-when-elided="true" name="mesh0" class="thumbnail" />
+    </ui:VisualElement>
+</ui:UXML>
